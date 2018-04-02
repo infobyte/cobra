@@ -257,7 +257,9 @@ def is_controllable(expr):  # 获取表达式中的变量，看是否在用户�
         '$HTTP_REQUEST_VARS',
         '$HTTP_POST_VARS',
         '$HTTP_RAW_POST_DATA',
-        '$HTTP_GET_VARS'
+        '$HTTP_GET_VARS',
+        '$post',
+        '$get'
     ]
     if expr in controlled_params:
         logger.debug('[AST] is_controllable --> {expr}'.format(expr=expr))
