@@ -264,3 +264,13 @@ $arr->uasort($a);
 //cvi-360037
 $a="http://www.test.com/sss.php";
 require_once $a;
+
+
+//cvi-160005 (Vulnerable)
+$results = $wpdb->get_results("SELECT * FROM" .$_GET["tableName1"]);
+
+$table1 = $_POST['table'];
+$results2 = $wpdb->query("SELECT * FROM ". $table1);
+
+// Not vulnerable
+$results2 = $wpdb->get_results("SELECT * FROM ". "asdasd");
