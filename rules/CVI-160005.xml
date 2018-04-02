@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cobra document="https://github.com/WhaleShark-Team/cobra">
+    <name value="SQLi Wordpress plugin"/>
+    <language value="php"/>
+    <match mode="regex-param-controllable"><![CDATA[
+    (?:\$wpdb->query|\$wpdb->get_var|\$wpdb->get_row|\$wpdb->get_col|\$wpdb->get_results|\$wpdb->replace)\((.+)\)
+    ]]></match>
+    <repair block="in-current-line"><![CDATA[(\$wpdb->prepare|mysql_real_escape_string|addslashes)]]></repair>
+    <test>
+        <case assert="true"><![CDATA[
+           $results = $wpdb->get_results( "SELECT * FROM ". $_GET["id"] . ".edn_subscriber");
+        ]]></case>
+        <case assert="false"><![CDATA[
+          $results = $wpdb->get_results( "SELECT * FROM ". "false" . "edn_subscriber");
+        ]]></case>
+        <case assert="false"><![CDATA[
+            $table = $_POST['table'];
+            $table = mysql_real_escape_string($table);
+            $results = $wpdb->get_results( "SELECT * FROM ". $table);
+        ]]></case>
+    </test>
+    <level value="8"/>
+    <solution>
+	The programmer need sanitize user input before append this to SQL query.
+    </solution>
+    <status value="on"/>
+    <author name="EzequielTBH" email="ezequieltbh@infobytesec.com"/>
+</cobra>
