@@ -219,6 +219,11 @@ class CAST(object):
             if param_name[:1] == '$':
                 logger.debug("[AST] Is variable: `Yes`")
 
+                if param_name == '$wpdb':
+                    logger.info("$wpdb detected, bypass that")
+                    logger.info(self.data)
+                    return False, self.data
+
                 # Get assign code block
                 param_block_code = self.block_code(0)
                 if param_block_code is False:
