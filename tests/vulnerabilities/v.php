@@ -274,3 +274,5 @@ $results2 = $wpdb->query("SELECT * FROM ". $table1);
 
 // Not vulnerable
 $results2 = $wpdb->get_results("SELECT * FROM ". "asdasd");
+$results3 = $wpdb->get_results("SELECT * FROM ".mysql_real_escape_string($_GET["tableName1"]));
+
