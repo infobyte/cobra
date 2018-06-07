@@ -6,6 +6,19 @@
 
 [![asciicast](https://raw.githubusercontent.com/WhaleShark-Team/cobra/master/docs/report_03.jpg)](https://asciinema.org/a/132572)
 
+## ABOUT THIS FORK
+
+This is a fork specialized in finding vulnerabilities on Wordpress plugins.
+
+Based in research of talk "Attacking WordPress plugins with no-style nor time"
+
+## AUTHORS OF THIS FORK
+
+Gabriel franco  @gaaabifranco
+
+Ezequiel Tavella @EzequielTBH
+
+
 ## Introduction（介绍）
 Cobra是一款**源代码安全审计**工具，支持检测多种开发语言源代码中的**大部分显著**的安全问题和漏洞。
 
